@@ -16,3 +16,6 @@
 3. IEI passes data to Core Validation (**CV**) to check the data and CV returns structured objects.
 4. Structured objects are passed to CoreAPI
 5. CoreAPI passes structured objects to Data Storage Engine Implementation (**DSEI**) which refreshes its indexes and stores the new data.
+
+## Improvements
+- Hash fetched CSV files (or use modification date) so we can determine whether they need to be updated and only update the ones that need to be updated.

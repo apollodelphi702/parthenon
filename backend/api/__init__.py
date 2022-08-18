@@ -10,7 +10,11 @@ class CoreAPI:
 
     def synchronize(self):
         """Uses the ingestion engine to synchronize the source data from the upstream server and then validate it."""
-        pass
+        self.controller.app.logger.info("Synchronizing dataset...")
+        self.controller.data_storage.store_dataset(
+            self.controller.ingestion.fetch_data()
+        )
+        self.controller.app.logger.info("Finished synchronizing dataset...")
 
     def fetch_index(self):
         """Fetches the file index from the server."""
