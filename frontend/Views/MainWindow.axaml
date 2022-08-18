@@ -1,0 +1,74 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Parthenon.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Parthenon.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Parthenon"
+		WindowStartupLocation="CenterScreen">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+	<!--
+	<TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+	-->
+	<!--
+	<Button Width="160" >My Button</Button>
+	-->
+	<DockPanel>
+		
+		<!-- Toolbar -->
+		<DockPanel DockPanel.Dock="Top" LastChildFill="False" Margin="20 10">
+			<TextBlock DockPanel.Dock="Left" VerticalAlignment="Center">Parthenon v1.0</TextBlock>
+			<StackPanel Orientation="Horizontal" Spacing="5" DockPanel.Dock = "Right">
+				<Button Command="{Binding HelpButtonClickCommand}">Help</Button>
+				<Button Command="{Binding SyncButtonClickCommand}">Synchronize</Button>
+			</StackPanel>
+		</DockPanel>
+		
+		<DockPanel LastChildFill="False" Margin="20 10">
+			<StackPanel Orientation="Vertical" Spacing="5" DockPanel.Dock="Left">
+				<CheckBox IsChecked="{Binding UseDateRange}">
+					<TextBlock Text="Search in Date Range"/>
+				</CheckBox>
+				<ComboBox IsEnabled="{Binding UseDateRange}">
+					<TextBlock>"07/06/2021"</TextBlock>
+				</ComboBox>
+				<ComboBox IsEnabled="{Binding UseDateRange}">
+					<TextBlock>"27/06/2021"</TextBlock>
+				</ComboBox>
+				<TextBlock DockPanel.Dock="Left" VerticalAlignment="Center">Quick Search Presets:</TextBlock>
+				<StackPanel Orientation="Horizontal" Spacing="5" DockPanel.Dock = "Left">
+					<Button Width="100">Today</Button>
+					<Button Width="100">Last Week</Button>
+					<Button Width="100">Last Month</Button>
+				</StackPanel>
+			</StackPanel>
+			<DataGrid Name="BatchEntriesDataGrid" AutoGenerateColumns="False" IsReadOnly="True">
+				<DataGrid.Columns>
+					<DataGridTextColumn Header="Batch ID" Binding="{Binding BatchId}" />
+					<DataGridTextColumn Header="Timestamp" Binding="{Binding Timestamp}" />
+					<DataGridTextColumn Header="Reading 1" Binding="{Binding Reading1}" />
+					<DataGridTextColumn Header="Reading 2" Binding="{Binding Reading2}" />
+					<DataGridTextColumn Header="Reading 3" Binding="{Binding Reading3}" />
+					<DataGridTextColumn Header="Reading 4" Binding="{Binding Reading4}" />
+					<DataGridTextColumn Header="Reading 5" Binding="{Binding Reading5}" />
+					<DataGridTextColumn Header="Reading 6" Binding="{Binding Reading6}" />
+					<DataGridTextColumn Header="Reading 7" Binding="{Binding Reading7}" />
+					<DataGridTextColumn Header="Reading 8" Binding="{Binding Reading8}" />
+					<DataGridTextColumn Header="Reading 9" Binding="{Binding Reading9}" />
+					<DataGridTextColumn Header="Reading 10" Binding="{Binding Reading10}" />
+				</DataGrid.Columns>
+			</DataGrid>
+		</DockPanel>
+
+
+		<!-- Main Window content -->
+
+
+	</DockPanel>
+</Window>

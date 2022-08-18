@@ -1,0 +1,18 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Parthenon.Views">
+  <Design.PreviewWith>
+    <controls:DateRangeControl />
+  </Design.PreviewWith>
+
+  <Style Selector="controls|DateRangeControl">
+    <!-- Set Defaults -->
+    <Setter Property="Template">
+      <ControlTemplate>
+		<CheckBox>
+        <TextBlock Text="Templated Control" />
+		</CheckBox>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>
