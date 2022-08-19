@@ -6,10 +6,50 @@
 		Width="500" Height="100"
         x:Class="Parthenon.Views.SyncDialogWindow"
         Title="Synchronizing..."
-	    WindowStartupLocation="CenterOwner">
+	    WindowStartupLocation="CenterOwner"
+        TransparencyLevelHint="AcrylicBlur"
+        Background="#A0000000"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome"
+        CanResize="False"
+        ShowInTaskbar="False"
+        Topmost="True">
+	
+	<Window.Styles>
+		<Style Selector="DockPanel">
+			<Style.Animations>
+				<Animation
+					Duration="0:0:0.8"
+					Easing="ExponentialEaseOut">
+					<KeyFrame Cue="0%">
+						<Setter Property="Opacity" Value="0" />
+						<Setter Property="TranslateTransform.Y" Value="-5.0" />
+					</KeyFrame>
+					<KeyFrame Cue="100%">
+						<Setter Property="Opacity" Value="1" />
+						<Setter Property="TranslateTransform.Y" Value="0" />
+					</KeyFrame>
+				</Animation>
+			</Style.Animations>
+		</Style>
+	</Window.Styles>
+	
 	<DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+		<ExperimentalAcrylicBorder IsHitTestVisible="False">
+			<ExperimentalAcrylicBorder.Material>
+				<ExperimentalAcrylicMaterial
+					BackgroundSource="Digger"
+					TintColor="Black"
+					TintOpacity="1"
+					MaterialOpacity="0.85" />
+			</ExperimentalAcrylicBorder.Material>
+		</ExperimentalAcrylicBorder>
+		
 		<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-			<TextBlock HorizontalAlignment="Center" Padding="0 0 0 10">Synchronizing...</TextBlock>
+			<TextBlock
+				HorizontalAlignment="Center" Margin="0 0 0 20">
+				Synchronizing...
+			</TextBlock>
 			<ProgressBar Width="400" IsIndeterminate="True" />
 		</StackPanel>
     </DockPanel>

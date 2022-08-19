@@ -26,13 +26,16 @@ namespace Parthenon.Views {
             BatchEntriesDataGrid.Items = batchEntriesView;
     }
 
-        private async Task ShowHelpDialog(InteractionContext<bool, Unit> context) {
+        private void ShowHelpDialog(InteractionContext<bool, Window> context) {
             var helpDialog = new HelpDialogWindow();
-            await helpDialog.ShowDialog(this);
+            context.SetOutput(helpDialog);
+            helpDialog.ShowDialog(this);
         }
-        private async Task ShowSyncDialog(InteractionContext<bool, Unit> context) {
+        
+        private void ShowSyncDialog(InteractionContext<bool, Window> context) {
             var syncDialog = new SyncDialogWindow();
-            await syncDialog.ShowDialog(this);
+            context.SetOutput(syncDialog);
+            syncDialog.ShowDialog(this);
         }
     }
 }

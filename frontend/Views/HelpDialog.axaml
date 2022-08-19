@@ -6,9 +6,43 @@
 		Width="500" Height="100"
         x:Class="Parthenon.Views.HelpDialogWindow"
         Title="Help"
-		WindowStartupLocation="CenterOwner">
+		WindowStartupLocation="CenterOwner"
+        TransparencyLevelHint="AcrylicBlur"
+        Background="#A0000000"
+        ExtendClientAreaToDecorationsHint="True"
+        CanResize="False">
+	
+	<Window.Styles>
+		<Style Selector="DockPanel">
+			<Style.Animations>
+				<Animation
+					Duration="0:0:0.8"
+					Easing="ExponentialEaseOut">
+					<KeyFrame Cue="0%">
+						<Setter Property="Opacity" Value="0" />
+						<Setter Property="TranslateTransform.Y" Value="-5.0" />
+					</KeyFrame>
+					<KeyFrame Cue="100%">
+						<Setter Property="Opacity" Value="1" />
+						<Setter Property="TranslateTransform.Y" Value="0" />
+					</KeyFrame>
+				</Animation>
+			</Style.Animations>
+		</Style>
+	</Window.Styles>
+	
 	<DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-		<TextBlock>Lol good luck.</TextBlock>
+		<ExperimentalAcrylicBorder IsHitTestVisible="False">
+			<ExperimentalAcrylicBorder.Material>
+				<ExperimentalAcrylicMaterial
+					BackgroundSource="Digger"
+					TintColor="Black"
+					TintOpacity="1"
+					MaterialOpacity="0.85" />
+			</ExperimentalAcrylicBorder.Material>
+		</ExperimentalAcrylicBorder>
+		
+		<TextBlock>Currently unavailable.</TextBlock>
 	</DockPanel>
   
   

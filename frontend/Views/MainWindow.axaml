@@ -7,48 +7,49 @@
         x:Class="Parthenon.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="Parthenon"
-		WindowStartupLocation="CenterScreen">
+		WindowStartupLocation="CenterScreen"
+        TransparencyLevelHint="AcrylicBlur"
+        Background="#80000000"
+        ExtendClientAreaToDecorationsHint="True">
 
     <Design.DataContext>
-        <vm:MainWindowViewModel/>
+	    <vm:MainWindowViewModel/>
     </Design.DataContext>
-
-	<!--
-	<TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-	-->
-	<!--
-	<Button Width="160" >My Button</Button>
-	-->
+	
 	<DockPanel>
 		
 		<!-- Toolbar -->
 		<DockPanel DockPanel.Dock="Top" LastChildFill="False" Margin="20 10">
-			<TextBlock DockPanel.Dock="Left" VerticalAlignment="Center">Parthenon v1.0</TextBlock>
-			<StackPanel Orientation="Horizontal" Spacing="5" DockPanel.Dock = "Right">
+			<TextBlock Margin="60 -3 0 0 " DockPanel.Dock="Left" VerticalAlignment="Top">Parthenon v1.0</TextBlock>
+			<StackPanel Margin="0 10 0 0" Orientation="Horizontal" Spacing="5" DockPanel.Dock = "Right">
 				<Button Command="{Binding HelpButtonClickCommand}">Help</Button>
 				<Button Command="{Binding SyncButtonClickCommand}">Synchronize</Button>
 			</StackPanel>
 		</DockPanel>
 		
+		<!-- Main Window content -->
 		<DockPanel LastChildFill="False" Margin="20 10">
 			<StackPanel Orientation="Vertical" Spacing="5" DockPanel.Dock="Left">
 				<CheckBox IsChecked="{Binding UseDateRange}">
 					<TextBlock Text="Search in Date Range"/>
 				</CheckBox>
-				<ComboBox IsEnabled="{Binding UseDateRange}">
-					<TextBlock>"07/06/2021"</TextBlock>
-				</ComboBox>
-				<ComboBox IsEnabled="{Binding UseDateRange}">
-					<TextBlock>"27/06/2021"</TextBlock>
-				</ComboBox>
-				<TextBlock DockPanel.Dock="Left" VerticalAlignment="Center">Quick Search Presets:</TextBlock>
+
+				<DatePicker IsEnabled="{Binding UseDateRange}" />
+				<DatePicker IsEnabled="{Binding UseDateRange}" />
+				<TextBlock Margin="0 10 0 0" FontSize="12" Text="{Binding  UseDateRangePrompt}" />
+
+				<TextBlock Margin="0 40 0 0" DockPanel.Dock="Left" VerticalAlignment="Center">Quick Search Presets:</TextBlock>
 				<StackPanel Orientation="Horizontal" Spacing="5" DockPanel.Dock = "Left">
 					<Button Width="100">Today</Button>
 					<Button Width="100">Last Week</Button>
 					<Button Width="100">Last Month</Button>
 				</StackPanel>
 			</StackPanel>
-			<DataGrid Name="BatchEntriesDataGrid" AutoGenerateColumns="False" IsReadOnly="True">
+			<DataGrid
+				Name="BatchEntriesDataGrid"
+				AutoGenerateColumns="False"
+				IsReadOnly="True"
+				HeadersVisibility="Column">
 				<DataGrid.Columns>
 					<DataGridTextColumn Header="Batch ID" Binding="{Binding BatchId}" />
 					<DataGridTextColumn Header="Timestamp" Binding="{Binding Timestamp}" />
@@ -65,10 +66,6 @@
 				</DataGrid.Columns>
 			</DataGrid>
 		</DockPanel>
-
-
-		<!-- Main Window content -->
-
-
+		
 	</DockPanel>
 </Window>
